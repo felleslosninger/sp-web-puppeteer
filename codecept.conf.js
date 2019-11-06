@@ -1,6 +1,6 @@
 exports.config = {
   tests: './*_test.js',
-  output: '',
+  output: './output',
   helpers: {
     Puppeteer: {
       url :'https://sp-web-test-test1.azurewebsites.net/',
@@ -9,14 +9,9 @@ exports.config = {
       }
     }
   },
-  plugins: {
-    allure: {
-      enabled: 'true'
-  }
-},
 mocha: {
   reporterOptions: {
-      mochaFile: 'output/result.xml'
+      reportDir: 'output'
   }
 },
   include: {
