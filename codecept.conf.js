@@ -1,6 +1,6 @@
 exports.config = {
   tests: './*_test.js',
-  output: './output',
+  output: '',
   helpers: {
     Puppeteer: {
       url :'https://sp-web-test-test1.azurewebsites.net/',
