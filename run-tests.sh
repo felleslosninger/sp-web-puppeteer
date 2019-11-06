@@ -12,6 +12,5 @@ mkdir -p output
 #install npm og andre avhenginger
 npm install
 npm run build
-npm install codeceptjs puppeteer allure-commandline --save-dev
-npm i mocha-junit-reporter
-npx codeceptjs run --steps --plugins allure
+npm install codeceptjs puppeteer mochawesome --save-dev
+npx codeceptjs run --steps --reporter mochawesome
