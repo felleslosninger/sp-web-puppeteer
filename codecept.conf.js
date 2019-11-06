@@ -14,10 +14,11 @@ exports.config = {
       enabled: 'true'
   }
 },
-  mocha: {
+mocha: {
   reporterOptions: {
       mochaFile: 'output/result.xml'
-  },
+  }
+},
   include: {
     I: './steps_file.js'
   },
