@@ -13,4 +13,4 @@ mkdir -p output
 npm install
 npm run build
 npm install codeceptjs puppeteer allure-commandline randomstring --save-dev
-npx codeceptjs run --steps --plugins allure --verbose
+npx codeceptjs run --steps --plugins allure
