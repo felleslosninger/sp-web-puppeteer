@@ -2,7 +2,8 @@
 Feature('sp-web-login');
 
 Scenario('sp-web ny integrasjoner',  (I)   => {
-	   I.amOnPage('https://sp-web-test-test1.azurewebsites.net/');
+	var randomstring = require("randomstring");
+	   	 I.amOnPage('https://sp-web-test-test1.azurewebsites.net/');
 		 I.see('Samarbeidsportalen');
 		 I.click('Logg inn');
 		 I.fillField('username',process.env.SP_WEB_USERNAME);
@@ -22,5 +23,22 @@ Scenario('sp-web ny integrasjoner',  (I)   => {
 		 I.see('Endret');
 		 I.see('+ Ny integrasjon');
 		 I.click('+ Ny integrasjon');
-		 I.click('//a[@href="/auth/logout"]');
+		 I.waitForElement("select#difi-service");
+		 I.selectOption("select#difi-service","Maskinporten");
+ 		 I.click('Legg til scopes');
+		 I.pressKey("Tab");
+		 I.saveScreenshot("blabla1.png");
+		 I.pressKey("Tab");
+		 I.saveScreenshot("blabla2.png");
+		 I.pressKey("Tab");
+		 I.saveScreenshot("blabla3.png");
+		 I.pressKey("Space");
+		 I.saveScreenshot("blabla4.png");
+		 I.click('Lukk');
+		 I.saveScreenshot("blabla5.png");
+		 var tempClientName=randomstring.generate();
+		 I.fillField('#client_name',tempClientName);
+		 I.fillField('#description','test');
+		 I.click('#submit-new-integration');
+		 I.click('//a[@href="/auth/logout"]');	
 });
