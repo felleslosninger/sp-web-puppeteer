@@ -3,7 +3,7 @@ Feature('sp-web-login');
 
 Scenario('sp-web endre klient',  (I)   => {
 var randomstring = require("randomstring");
-	   I.amOnPage('https://sp-web-test-test1.azurewebsites.net/');
+	         I.amOnPage('https://sp-web-test-test1.azurewebsites.net/');
 		 I.see('Samarbeidsportalen');
 		 I.click('Logg inn');
 		 I.fillField('username','utvtest@difi.no');
@@ -42,6 +42,10 @@ var randomstring = require("randomstring");
 		 I.fillField('#client_name',tempClientName);
 		 I.fillField('#description','test');
 		 I.click('#submit-new-integration');
+	         let numTodos = I.grabTextFrom('#client_id');
+		 I.click('#change-integration');
+		 I.fillField('#client_name',tempClientName+' Endret');
+		 I.click('#submit-new-integration');	
 		 I.click('//a[@href="/auth/logout"]');
 
 });
