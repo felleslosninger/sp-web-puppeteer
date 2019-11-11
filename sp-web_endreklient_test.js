@@ -22,7 +22,8 @@ var randomstring = require("randomstring");
 		 I.see('Endret');
 		 
 		 I.click('#new-integration');
-	 	 I.waitForElement("select#difi-service");
+		 I.retry({ retries: 3, maxTimeout: 3000 }).see('select#difi-service');
+	 	// I.waitForElement("select#difi-service");
 		 I.selectOption("select#difi-service","Maskinporten");
 
 		 I.click('Legg til scopes');
