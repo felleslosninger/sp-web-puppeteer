@@ -20,32 +20,39 @@ var randomstring = require("randomstring");
 		 I.see('Beskrivelse');
 		 I.see('Opprettet');
 		 I.see('Endret');
-		 I.click('+ Ny integrasjon');
+		 
+		 I.click('#new-integration');
 	 	 I.waitForElement("select#difi-service");
 		 I.selectOption("select#difi-service","Maskinporten");
+
 		 I.click('Legg til scopes');
-		 //I.seeCheckcheckOption('#difi:vivian');
-		 //I.seeCheckboxIsChecked("#difi:vivian")
-		 //I.checkOption("difi:vivian");
-		 //I.pressKey(["Tab", "Tab","Tab","Shift"]);
 		 I.pressKey("Tab");
-		 I.saveScreenshot("blabla1.png");
 		 I.pressKey("Tab");
-		 I.saveScreenshot("blabla2.png");
 		 I.pressKey("Tab");
-		 I.saveScreenshot("blabla3.png");
 		 I.pressKey("Space");
-		 I.saveScreenshot("blabla4.png");
 		 I.click('Lukk');
-		 I.saveScreenshot("blabla5.png");
+	
 		 var tempClientName=randomstring.generate();
 		 I.fillField('#client_name',tempClientName);
 		 I.fillField('#description','test');
+	         I.fillField('#authorization_lifetime','3600');
+		 I.fillField('#access_token_lifetime','3600');
+		 I.fillField('#refresh_token_lifetime','1200');
 		 I.click('#submit-new-integration');
-	         let numTodos = I.grabTextFrom('#client_id');
+	
 		 I.click('#change-integration');
-		 I.fillField('#client_name',tempClientName+' Endret');
-		 I.click('#submit-new-integration');	
+		 let getClientID = await  I.grabValueFrom('#client_id');
+		 I.fillField('#client_name',getClientID +' Endret');
+		 var newClientName=getClientID+ ' Endret';
+		 I.click('#save-integration');
+		 
+		 I.click('#change-integration');
+	   	 let getClientName = I.grabTextFrom('#client_name');
+		 var assert = require('assert');
+		 assert(getClientName,newClientName);
+		 
+		 I.click('#deactivate-integration');
+		 I.click('#deactivate_button');
 		 I.click('//a[@href="/auth/logout"]');
 
 });
