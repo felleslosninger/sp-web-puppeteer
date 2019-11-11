@@ -1,7 +1,7 @@
 
 Feature('sp-web-login');
 
-Scenario('sp-web endre klient',  (I)   => {
+Scenario('sp-web endre klient', async (I)   => {
 var randomstring = require("randomstring");
 	         I.amOnPage('https://sp-web-test-test1.azurewebsites.net/');
 		 I.see('Samarbeidsportalen');
