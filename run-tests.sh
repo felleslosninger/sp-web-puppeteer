@@ -13,4 +13,4 @@ mkdir -p output
 npm install
 npm run build
 npm install codeceptjs puppeteer mocha-junit-reporter randomstring --save-dev
-npx codeceptjs run --steps --reporter mocha-junit-reporter
+npx codeceptjs run --steps --verbose --reporter mocha-junit-reporter 
