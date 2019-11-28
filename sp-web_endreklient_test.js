@@ -40,12 +40,14 @@ var randomstring = require("randomstring");
 		 I.fillField('#refresh_token_lifetime','1200');
 		 I.click('#submit-new-integration');
 	
+	 	 I.waitForElement("#change-integration",5);	
 		 I.click('#change-integration');
 		 let getClientID = await  I.grabValueFrom('#client_id');
 		 I.fillField('#client_name',getClientID +' Endret');
 		 var newClientName=getClientID+ ' Endret';
 		 I.click('#save-integration');
 		 
+	 	 I.waitForElement("#change-integration",5);
 		 I.click('#change-integration');
 	   	 let getClientName = I.grabTextFrom('#client_name');
 		 var assert = require('assert');
