@@ -38,16 +38,18 @@ var randomstring = require("randomstring");
 	         I.fillField('#authorization_lifetime','3600');
 		 I.fillField('#access_token_lifetime','3600');
 		 I.fillField('#refresh_token_lifetime','1200');
+		 I.waitForElement("select#difi-application",5);
+		 I.selectOption("select#difi-application","web");	
 		 I.click('#submit-new-integration');
 	
-	 	 I.waitForElement("#change-integration",5);	
+	 	 I.waitForElement("#change-integration",10);	
 		 I.click('#change-integration');
 		 let getClientID = await  I.grabValueFrom('#client_id');
 		 I.fillField('#client_name',getClientID +' Endret');
 		 var newClientName=getClientID+ ' Endret';
 		 I.click('#save-integration');
 		 
-	 	 I.waitForElement("#change-integration",5);
+	 	 I.waitForElement("#change-integration",10);
 		 I.click('#change-integration');
 	   	 let getClientName = I.grabTextFrom('#client_name');
 		 var assert = require('assert');
