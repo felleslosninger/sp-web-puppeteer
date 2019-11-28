@@ -42,14 +42,12 @@ var randomstring = require("randomstring");
 		 I.selectOption("select#difi-application","web");	
 		 I.click('#submit-new-integration');
 	
-	 	 I.waitForElement("#change-integration",10);	
 		 I.click('#change-integration');
 		 let getClientID = await  I.grabValueFrom('#client_id');
 		 I.fillField('#client_name',getClientID +' Endret');
 		 var newClientName=getClientID+ ' Endret';
 		 I.click('#save-integration');
 		 
-	 	 I.waitForElement("#change-integration",10);
 		 I.click('#change-integration');
 	   	 let getClientName = I.grabTextFrom('#client_name');
 		 var assert = require('assert');
