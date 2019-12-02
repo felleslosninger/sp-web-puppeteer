@@ -38,8 +38,6 @@ var randomstring = require("randomstring");
 	         I.fillField('#authorization_lifetime','3600');
 		 I.fillField('#access_token_lifetime','3600');
 		 I.fillField('#refresh_token_lifetime','1200');
-		 I.waitForElement("select#difi-application",5);
-		 I.selectOption("select#difi-application","web");	
 		 I.click('#submit-new-integration');
 	
 		 I.click('#change-integration');
