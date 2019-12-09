@@ -18,7 +18,7 @@ exports.config = {
 },  
  mocha: {
     reporterOptions: {
-        mochaFile: 'output/result.xml'
+        mochaFile: 'output'
     }
   },
   include: {
