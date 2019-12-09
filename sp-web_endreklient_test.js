@@ -22,7 +22,7 @@ var randomstring = require("randomstring");
 		 I.see('Endret');
 		 
 		 I.click('#new-integration');
-		 I.waitForElement("select#difi-service",5);
+		 I.wait(5);
 		 I.selectOption("select#difi-service","Maskinporten");
 
 		 I.click('Legg til scopes');
