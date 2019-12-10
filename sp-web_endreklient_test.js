@@ -39,6 +39,7 @@ var randomstring = require("randomstring");
 		 I.fillField('#access_token_lifetime','3600');
 		 I.fillField('#refresh_token_lifetime','1200');
 		 I.click('#submit-new-integration');
+	         I.click("#close_button");
 	
 		 I.click('#change-integration');
 		 let getClientID = await  I.grabValueFrom('#client_id');
