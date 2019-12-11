@@ -19,6 +19,7 @@ exports.config = {
         options: {
           mochaFile: './output/result.xml',
           testsuitesTitle: 'CodeceptJS Tests',
+          attachments: true
         },
         attachments: true //add screenshot for a failed test
       },
