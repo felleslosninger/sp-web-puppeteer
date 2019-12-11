@@ -15,12 +15,12 @@ exports.config = {
   mocha: {
     reporterOptions: {
       'mocha-junit-reporter': {
-        stdout: './reports/console.log',
+        stdout: './output/console.log',
         options: {
           mochaFile: './output/result.xml',
           testsuitesTitle: 'CodeceptJS Tests',
         },
-        "attachments": true //add screenshot for a failed test
+        attachments: true //add screenshot for a failed test
       },
       'codeceptjs-cli-reporter': {
         stdout: '-',
