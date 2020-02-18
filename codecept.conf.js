@@ -1,15 +1,37 @@
+require('dotenv').config();
+
+const { setSharedCookies } = require('@codeceptjs/configure');
+setSharedCookies(); // share cookies between browser helpers and REST helper
+
 exports.config = {
-  tests: './*_test.js',
+  tests: './src/test/**/*_test.js',
   output: './output',
+  timeout: 20000,
   helpers: {
     Puppeteer: {
-      url :'https://sp-web-test-test1.azurewebsites.net/',
-      waitForNavigation:  [ "domcontentloaded", "networkidle0" ],
-      waitForAction: 10000,
+      url: process.env.SP_WEB_HOST,
+      waitForNavigation:  ["networkidle0", "domcontentloaded"],
+      // waitForNavigation:  "networkidle0",
+      waitForAction: 100,
+      waitForTimeout: 2000,
+      getPageTimeout: 20000,
+      windowSize: "1200x900",
+      show: (process.env.SP_WEB_SHOW_GUI === "true"),
       chrome:{
-        args: ['--no-sandbox']
-      }
-    }
+        args: ['--disable-features=IsolateOrigins,site-per-process', '--disable-site-per-process', '--disable-web-security'],
+        ignoreHTTPSErrors: true
+      },
+      pressKeyDelay: 5
+    },
+    REST: {
+      endpoint: process.env.SP_WEB_HOST + '/api',
+    },
+    AssertWrapper : {
+      require: "codeceptjs-assert"
+    },
+    BankIdHelper: {
+      require: './src/helpers/bankid_helper.js',
+    },
   },
   
   mocha: {
@@ -33,8 +55,8 @@ exports.config = {
   },
   
   include: {
-    I: './steps_file.js'
+    I: './src/steps/steps_file.js'
   },
   bootstrap: null,
   name: 'webdriverpuppeteer'
-}
+};
