@@ -13,7 +13,7 @@ exports.config = {
       waitForNavigation:  ["networkidle0", "domcontentloaded"],
       // waitForNavigation:  "networkidle0",
       waitForAction: 100,
-      waitForTimeout: 2000,
+      waitForTimeout: 20000,
       getPageTimeout: 20000,
       windowSize: "1200x900",
       show: (process.env.SP_WEB_SHOW_GUI === "true"),
