@@ -27,7 +27,7 @@ Scenario('sp-web create clients with default values', async (I) => {
      * Maskinporten client
      ********************************************************/
     // click new integration
-    I.click('#new-integrationXXX');
+    I.click('#new-integration');
     I.waitForInvisible('.spinner-container');
 
     // select integration_type & application_type
