@@ -1,6 +1,6 @@
 const randomstring = require("randomstring");
 
-Feature('sp-web smoke test');
+Feature('sp-web default test');
 
 Before(async (I) => {
     // start & login
@@ -245,4 +245,44 @@ Scenario('sp-web create client as supplier', async (I) => {
     I.waitForInvisible('#deactivate-confirm-modal');
     I.waitForInvisible('.spinner-container');
     I.seeInCurrentUrl('/integrations');
+});
+
+
+
+Scenario('sp-web create scope with default values', async (I) => {
+
+    // nav to list of scopes
+    I.click('#scopes-link');
+    I.waitForInvisible('.spinner-container');
+    I.seeElement("#scopes-table");
+
+    // click 'new scope'
+    I.click('#new-scope');
+    I.waitForInvisible('.spinner-container');
+
+    // fill form
+    let prefixName = await I.grabTextFrom('select#prefix option:nth-child(1)');
+    I.assertOk(!!prefixName, 'Prefix dropdown is empty.');
+    I.selectOption("select#prefix", prefixName); // select first available prefix
+    let subscopeName = 'testscope/' + await randomstring.generate({length: 8, charset: 'alphanumeric', capitalization: 'lowercase'});
+    I.fillField('#subscope', subscopeName);
+    I.fillField('#description', 'scope test');
+
+    // submit form
+    I.click('#submit-new-scope');
+    I.waitForNavigation();
+
+    // verify
+    I.seeInCurrentUrl('/scopes/' + prefixName + ':' + subscopeName);
+
+    // deactivate scope
+    I.click('#change_button');
+    I.waitForClickable('#deactivate_button');
+    I.click('#deactivate_button');
+    I.waitForVisible('body > div.fade.sp-web.modal.show > div');   // I.waitForVisible('#deactivate-scope-modal');
+    I.click('#deactivate_button');
+    I.waitForInvisible('body > div.fade.sp-web.modal.show > div'); // I.waitForInvisible('#deactivate-scope-modal');
+    I.waitForInvisible('.spinner-container');
+    I.seeInCurrentUrl('/scopes');
+
 });
