@@ -16,7 +16,7 @@ After(async (I) => {
     I.logout();
 });
 
-Scenario.skip('sp-web create clients with default values', async (I) => {
+Scenario('sp-web create clients with default values', async (I) => {
 
     // nav to list of integrations
     I.click('#integrations-link');
@@ -167,7 +167,7 @@ Scenario.skip('sp-web create clients with default values', async (I) => {
 
 });
 
-Scenario.skip('sp-web create client as supplier', async (I) => {
+Scenario('sp-web create client as supplier', async (I) => {
 
     // verify supplier permissions
     let permissions  = await I.sendGetRequest('/account/user-permissions');
