@@ -4,7 +4,7 @@ const { setSharedCookies } = require('@codeceptjs/configure');
 setSharedCookies(); // share cookies between browser helpers and REST helper
 
 exports.config = {
-  tests: './src/test/**/*_test.js',
+  tests: './src/tests/*_test.js',
   output: './output',
   timeout: 20000,
   helpers: {
@@ -48,6 +48,7 @@ exports.config = {
       'codeceptjs-cli-reporter': {
         stdout: '-',
         options: {
+          verbose: false,
           steps: true,
         },
       },
@@ -55,7 +56,12 @@ exports.config = {
   },
   
   include: {
-    I: './src/steps/steps_file.js'
+    I: './src/steps/steps_file.js',
+    loginPage: './src/pages/loginPage.js',
+    integrationListPage: './src/pages/integrationListPage.js',
+    integrationPage: './src/pages/integrationPage.js',
+    scopeListPage: './src/pages/scopeListPage.js',
+    scopePage: './src/pages/scopePage.js',
   },
   bootstrap: null,
   name: 'webdriverpuppeteer'

@@ -1,4 +1,4 @@
-Feature('sp-web-idporten-login');
+Feature('sp-web idporten-login test');
 
 Before(async (I) => {
     // start & login
@@ -14,15 +14,9 @@ After(async (I) => {
 });
 
 
-Scenario('sp-web login through ID-Porten', async (I) => {
-
-    // nav to list of integrations
-    I.click('#integrations-link');
-    I.waitForInvisible('.spinner-container');
-    I.seeElement("#integrations-table");
-
+Scenario.skip('sp-web login through ID-Porten', async (I) => {
+    I.navigateToIntegrationList();
     I.loginWithIdPorten(process.env.SP_WEB_IDPORTEN_USERNAME, process.env.SP_WEB_IDPORTEN_PASSWORD, process.env.SP_WEB_IDPORTEN_OTP);
-
     I.waitForInvisible('.spinner-container');
     I.waitForElement('button#env-badge');
     I.seeInCurrentUrl('/integrations');
