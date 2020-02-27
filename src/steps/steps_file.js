@@ -21,8 +21,8 @@ module.exports = function() {
       this.waitForNavigation();
     },
 
-    logout: function () {
-      this.amOnPage(process.env.SP_WEB_HOST + '/');
+    logout: function (host = process.env.SP_WEB_HOST) {
+      this.amOnPage(host + '/');
       this.click('#logout');
       this.waitForNavigation();
     },

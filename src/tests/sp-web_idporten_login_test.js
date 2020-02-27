@@ -2,7 +2,7 @@ Feature('sp-web idporten-login test');
 
 Before(async (I) => {
     // start & login
-    I.amOnPage(process.env.SP_WEB_HOST + '/');
+    I.amOnPage(process.env.SP_WEB_IDPORTEN_ENABLED_HOST + '/');
     I.loginWithMidifi(process.env.SP_WEB_MIDIFI_READONLY_USERNAME, process.env.SP_WEB_MIDIFI_READONLY_PASSWORD);
 
     // sanity check
@@ -10,7 +10,7 @@ Before(async (I) => {
 });
 
 After(async (I) => {
-    I.logout();
+    I.logout(process.env.SP_WEB_IDPORTEN_ENABLED_HOST);
 });
 
 
