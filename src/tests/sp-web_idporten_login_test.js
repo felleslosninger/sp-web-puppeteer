@@ -3,7 +3,7 @@ Feature('sp-web idporten-login test');
 Before(async (I) => {
     // start & login
     I.amOnPage(process.env.SP_WEB_HOST + '/');
-    I.loginWithMidifi(process.env.SP_WEB_MIDIFI_USERNAME, process.env.SP_WEB_MIDIFI_PASSWORD);
+    I.loginWithMidifi(process.env.SP_WEB_MIDIFI_READONLY_USERNAME, process.env.SP_WEB_MIDIFI_READONLY_PASSWORD);
 
     // sanity check
     I.checkEnvironmentAndFirstPage();
@@ -14,7 +14,7 @@ After(async (I) => {
 });
 
 
-Scenario.skip('sp-web login through ID-Porten', async (I) => {
+Scenario('sp-web login through ID-Porten', async (I) => {
     I.navigateToIntegrationList();
     I.loginWithIdPorten(process.env.SP_WEB_IDPORTEN_USERNAME, process.env.SP_WEB_IDPORTEN_PASSWORD, process.env.SP_WEB_IDPORTEN_OTP);
     I.waitForInvisible('.spinner-container');
