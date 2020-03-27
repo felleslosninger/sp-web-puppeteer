@@ -74,5 +74,26 @@ module.exports = {
         I.waitForInvisible('.spinner-container');
     },
 
+    async submitForm(integrationType) {
+        // submit form
+        I.click('#submit-new-integration');
+        I.waitForNavigation();
+
+        // verify client
+        I.seeElement("#confirm-modal");
+        let clientId = (await I.grabTextFrom('#modal-client-id')).split('client_id: ')[0];
+        I.seeInCurrentUrl('/integrations/' + clientId);
+        I.click("#close_button");
+
+        // verify client in table listing
+        I.navigateToIntegrationList();
+        I.seeTextEquals(clientId, '//table[@id="integrations-table"]//a[@href="/integrations/' + clientId + '"]');
+        I.seeTextEquals(integrationType, '//*[@id="integrations-table"]/tbody/tr[1]/td[3]');
+        I.click('//table[@id="integrations-table"]//a[@href="/integrations/' + clientId + '"]');
+        I.waitForInvisible('.spinner-container');
+
+        return clientId;
+    },
+
 
 };

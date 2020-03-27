@@ -73,9 +73,7 @@ module.exports = function() {
     },
 
     navigateToMainPage: function () {
-
       this.seeInTitle('Administrasjon av tjenester | Digitaliseringsdirektoratet');
-
     },
 
   });
