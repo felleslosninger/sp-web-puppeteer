@@ -23,8 +23,8 @@ module.exports = {
 
         // verify client in table listing
         I.navigateToIntegrationList();
-        I.seeTextEquals(clientId, '//table[@id="integrations-table"]//a[@href="/integrations/' + clientId + '"]');
-        I.click('//table[@id="integrations-table"]//a[@href="/integrations/' + clientId + '"]');
+        I.seeTextEquals(clientId, '//a[@href="/integrations/' + clientId + '"]');
+        I.click('//a[@href="/integrations/' + clientId + '"]');
         I.waitForInvisible('.spinner-container');
 
         return clientId;
@@ -56,7 +56,6 @@ module.exports = {
 
     addNthScope(n) {
         I.click('#add-scopes');
-        I.waitForVisible("#add-scopes-modal");
         I.see('Tilgjengelige scopes');
         I.seeElement('#scope-' + n);
         I.checkOption('#scope-' + n);
@@ -73,27 +72,4 @@ module.exports = {
         I.click('#save-integration');
         I.waitForInvisible('.spinner-container');
     },
-
-    async submitForm(integrationType) {
-        // submit form
-        I.click('#submit-new-integration');
-        I.waitForNavigation();
-
-        // verify client
-        I.seeElement("#confirm-modal");
-        let clientId = (await I.grabTextFrom('#modal-client-id')).split('client_id: ')[0];
-        I.seeInCurrentUrl('/integrations/' + clientId);
-        I.click("#close_button");
-
-        // verify client in table listing
-        I.navigateToIntegrationList();
-        I.seeTextEquals(clientId, '//table[@id="integrations-table"]//a[@href="/integrations/' + clientId + '"]');
-        I.seeTextEquals(integrationType, '//*[@id="integrations-table"]/tbody/tr[1]/td[3]');
-        I.click('//table[@id="integrations-table"]//a[@href="/integrations/' + clientId + '"]');
-        I.waitForInvisible('.spinner-container');
-
-        return clientId;
-    },
-
-
 };

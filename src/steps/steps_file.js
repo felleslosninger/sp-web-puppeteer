@@ -59,22 +59,6 @@ module.exports = function() {
       this.waitForInvisible('.spinner-container');
     },
 
-    checkEnvironmentAndFirstPageForSamarbeidsportalen: function () {
-      this.seeInCurrentUrl('/');
-      this.seeInTitle("test testesen | Digitaliseringsdirektoratet");
-    },
-
-    loginWithSamarbeidsPortalen: function (username, password) {
-      this.seeInTitle('Logg inn på Felles brukerhåndtering');
-      this.fillField('username', username);
-      this.fillField('password', password);
-      this.click('login');
-      this.waitForNavigation();
-    },
-
-    navigateToMainPage: function () {
-      this.seeInTitle('Administrasjon av tjenester | Digitaliseringsdirektoratet');
-    },
 
   });
 };
