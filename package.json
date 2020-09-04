@@ -7,15 +7,15 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "codeceptjs": "^2.4.3",
+    "codeceptjs": "^2.6.10",
     "dotenv": "^8.2.0",
     "mocha-multi": "^1.1.3",
-    "puppeteer": "^2.1.1",
+    "puppeteer": "^5.2.1",
     "randomstring": "^1.1.5"
   },
   "dependencies": {
     "codeceptjs-assert": "0.0.4",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.20",
     "mocha-junit-reporter": "^1.23.1"
   },
   "scripts": {

@@ -55,7 +55,9 @@ module.exports = {
     },
 
     addNthScope(n) {
+        I.waitForClickable('#add-scopes');
         I.click('#add-scopes');
+        I.waitForVisible('#add-scopes-modal');
         I.see('Tilgjengelige scopes');
         I.seeElement('#scope-' + n);
         I.checkOption('#scope-' + n);
