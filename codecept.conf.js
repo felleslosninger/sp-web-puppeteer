@@ -35,7 +35,10 @@ exports.config = {
   },
   
     plugins: {
-    allure: {},
+    allure: {
+            enabled: true,
+            outputDir: './output/allure/allure-results'
+    },
     stepByStepReport: {
       enabled: true,
       deleteSuccessful: true,
