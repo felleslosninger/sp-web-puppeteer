@@ -34,10 +34,24 @@ exports.config = {
     },
   },
   
-    plugins: {
-    allure: {
-            enabled: true,
-            outputDir: 'allure-results'
+  mocha: {
+    reporterOptions: {
+      'mocha-junit-reporter': {
+        stdout: './output/console.log',
+        options: {
+          mochaFile: './output/result.xml',
+          testsuitesTitle: 'CodeceptJS Tests',
+          attachments: true
+        },
+        attachments: true //add screenshot for a failed test
+      },
+      'codeceptjs-cli-reporter': {
+        stdout: '-',
+        options: {
+          verbose: false,
+          steps: true,
+        },
+      },
     },
     stepByStepReport: {
       enabled: true,
